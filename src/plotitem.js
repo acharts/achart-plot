@@ -77,6 +77,31 @@ Util.augment(Item,{
     }
   },
   /**
+   * 获取显示的子项
+   * @return {Array} 显示的子项
+   */
+  getVisibleChildren : function(){
+    var _self = this,
+      children = _self.get('children');
+    return Util.filter(children,function(item){
+      return item.get('visible');
+    });
+  },
+  /**
+   * 显示子项
+   * @param  {Chart.Canvas.Base} child 子项
+   */
+  showChild : function(child){
+    child && child.show();
+  },
+  /**
+   * 隐藏子项
+   * @param  {Chart.Canvas.Base} child 子项
+   */
+  hideChild : function(child){
+    child && child.hide();
+  },
+  /**
    * 在顶层图表控件上触发事件
    * @param {String} name 事件名称
    * @param  {Object} ev 事件对象

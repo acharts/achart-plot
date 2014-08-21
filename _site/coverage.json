@@ -1,7 +1,7 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 129,
-  "hits": 129,
+  "sloc": 134,
+  "hits": 134,
   "misses": 0,
   "coverage": 100,
   "files": [
@@ -705,9 +705,9 @@
     {
       "filename": "/Users/dxq613/Desktop/work/acharts/achart-plot/src/plotitem.js",
       "coverage": 100,
-      "hits": 32,
+      "hits": 37,
       "misses": 0,
-      "sloc": 32,
+      "sloc": 37,
       "source": {
         "1": {
           "source": "/**",
@@ -751,11 +751,11 @@
         },
         "11": {
           "source": "  if(c._attrs || c == Canvas.Group){",
-          "coverage": 9
+          "coverage": 13
         },
         "12": {
           "source": "    return;",
-          "coverage": 4
+          "coverage": 8
         },
         "13": {
           "source": "  }",
@@ -835,11 +835,11 @@
         },
         "32": {
           "source": "\tinitClassAttrs(this.constructor);",
-          "coverage": 5
+          "coverage": 9
         },
         "33": {
           "source": "\tItem.superclass.constructor.call(this,cfg);",
-          "coverage": 5
+          "coverage": 9
         },
         "34": {
           "source": "};",
@@ -955,7 +955,7 @@
         },
         "62": {
           "source": "\t\tvar _self = this,",
-          "coverage": 5
+          "coverage": 9
         },
         "63": {
           "source": "\t\t\tcon = _self.constructor,",
@@ -971,7 +971,7 @@
         },
         "66": {
           "source": "\t\treturn rst;",
-          "coverage": 5
+          "coverage": 9
         },
         "67": {
           "source": "\t},",
@@ -991,7 +991,7 @@
         },
         "71": {
           "source": "    var _self = this,",
-          "coverage": 5
+          "coverage": 9
         },
         "72": {
           "source": "      events = _self.get('events');",
@@ -999,7 +999,7 @@
         },
         "73": {
           "source": "    if(events){",
-          "coverage": 5
+          "coverage": 9
         },
         "74": {
           "source": "      Util.each(events,function(v,k){",
@@ -1026,83 +1026,83 @@
           "coverage": ""
         },
         "80": {
-          "source": "   * 在顶层图表控件上触发事件",
+          "source": "   * 获取显示的子项",
           "coverage": ""
         },
         "81": {
-          "source": "   * @param {String} name 事件名称",
+          "source": "   * @return {Array} 显示的子项",
           "coverage": ""
         },
         "82": {
-          "source": "   * @param  {Object} ev 事件对象",
-          "coverage": ""
-        },
-        "83": {
           "source": "   */",
           "coverage": ""
         },
-        "84": {
-          "source": "  fireUp : function(name,ev){",
+        "83": {
+          "source": "  getVisibleChildren : function(){",
           "coverage": ""
+        },
+        "84": {
+          "source": "    var _self = this,",
+          "coverage": 3
         },
         "85": {
-          "source": "    var _self = this,",
-          "coverage": 2
+          "source": "      children = _self.get('children');",
+          "coverage": ""
         },
         "86": {
-          "source": "      canvas = _self.get('canvas'),",
-          "coverage": ""
+          "source": "    return Util.filter(children,function(item){",
+          "coverage": 3
         },
         "87": {
-          "source": "      chart = canvas.chart;",
-          "coverage": ""
+          "source": "      return item.get('visible');",
+          "coverage": 9
         },
         "88": {
-          "source": "    ev = ev || {};",
-          "coverage": 2
-        },
-        "89": {
-          "source": "    if(chart){",
-          "coverage": 2
-        },
-        "90": {
-          "source": "      ev.target = ev.target || chart;",
-          "coverage": 2
-        },
-        "91": {
-          "source": "      chart.fire(name,ev);",
-          "coverage": 2
-        },
-        "92": {
-          "source": "    }",
+          "source": "    });",
           "coverage": ""
         },
-        "93": {
+        "89": {
           "source": "  },",
           "coverage": ""
         },
-        "94": {
+        "90": {
           "source": "  /**",
           "coverage": ""
         },
-        "95": {
-          "source": "   * @protected",
+        "91": {
+          "source": "   * 显示子项",
           "coverage": ""
         },
+        "92": {
+          "source": "   * @param  {Chart.Canvas.Base} child 子项",
+          "coverage": ""
+        },
+        "93": {
+          "source": "   */",
+          "coverage": ""
+        },
+        "94": {
+          "source": "  showChild : function(child){",
+          "coverage": ""
+        },
+        "95": {
+          "source": "    child && child.show();",
+          "coverage": 1
+        },
         "96": {
-          "source": "   * 在分组上触发事件",
+          "source": "  },",
           "coverage": ""
         },
         "97": {
-          "source": "   * @param  {String} name 事件名称",
+          "source": "  /**",
           "coverage": ""
         },
         "98": {
-          "source": "   * @param  {Object} item 触发事件的子项",
+          "source": "   * 隐藏子项",
           "coverage": ""
         },
         "99": {
-          "source": "   * @param  {Object} obj  事件对象",
+          "source": "   * @param  {Chart.Canvas.Base} child 子项",
           "coverage": ""
         },
         "100": {
@@ -1110,62 +1110,162 @@
           "coverage": ""
         },
         "101": {
-          "source": "  fireUpGroup : function(name,item,obj){",
+          "source": "  hideChild : function(child){",
           "coverage": ""
         },
         "102": {
-          "source": "    var _self = this,",
+          "source": "    child && child.hide();",
           "coverage": 1
         },
         "103": {
-          "source": "      itemName = _self.get('itemName'),",
+          "source": "  },",
           "coverage": ""
         },
         "104": {
-          "source": "      groupName = _self.get('groupName');",
+          "source": "  /**",
           "coverage": ""
         },
         "105": {
-          "source": "    obj = obj || {};",
-          "coverage": 1
+          "source": "   * 在顶层图表控件上触发事件",
+          "coverage": ""
         },
         "106": {
-          "source": "    obj[itemName] =  item;",
-          "coverage": 1
+          "source": "   * @param {String} name 事件名称",
+          "coverage": ""
         },
         "107": {
-          "source": "    if(groupName){",
-          "coverage": 1
+          "source": "   * @param  {Object} ev 事件对象",
+          "coverage": ""
         },
         "108": {
-          "source": "      obj[groupName] = _self.get('parent')",
-          "coverage": 1
+          "source": "   */",
+          "coverage": ""
         },
         "109": {
-          "source": "    }",
+          "source": "  fireUp : function(name,ev){",
           "coverage": ""
         },
         "110": {
-          "source": "    _self.fireUp(itemName.toLowerCase() + name,obj);",
-          "coverage": 1
+          "source": "    var _self = this,",
+          "coverage": 2
         },
         "111": {
-          "source": "  }",
+          "source": "      canvas = _self.get('canvas'),",
           "coverage": ""
         },
         "112": {
-          "source": "});",
+          "source": "      chart = canvas.chart;",
           "coverage": ""
         },
         "113": {
+          "source": "    ev = ev || {};",
+          "coverage": 2
+        },
+        "114": {
+          "source": "    if(chart){",
+          "coverage": 2
+        },
+        "115": {
+          "source": "      ev.target = ev.target || chart;",
+          "coverage": 2
+        },
+        "116": {
+          "source": "      chart.fire(name,ev);",
+          "coverage": 2
+        },
+        "117": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "118": {
+          "source": "  },",
+          "coverage": ""
+        },
+        "119": {
+          "source": "  /**",
+          "coverage": ""
+        },
+        "120": {
+          "source": "   * @protected",
+          "coverage": ""
+        },
+        "121": {
+          "source": "   * 在分组上触发事件",
+          "coverage": ""
+        },
+        "122": {
+          "source": "   * @param  {String} name 事件名称",
+          "coverage": ""
+        },
+        "123": {
+          "source": "   * @param  {Object} item 触发事件的子项",
+          "coverage": ""
+        },
+        "124": {
+          "source": "   * @param  {Object} obj  事件对象",
+          "coverage": ""
+        },
+        "125": {
+          "source": "   */",
+          "coverage": ""
+        },
+        "126": {
+          "source": "  fireUpGroup : function(name,item,obj){",
+          "coverage": ""
+        },
+        "127": {
+          "source": "    var _self = this,",
+          "coverage": 1
+        },
+        "128": {
+          "source": "      itemName = _self.get('itemName'),",
+          "coverage": ""
+        },
+        "129": {
+          "source": "      groupName = _self.get('groupName');",
+          "coverage": ""
+        },
+        "130": {
+          "source": "    obj = obj || {};",
+          "coverage": 1
+        },
+        "131": {
+          "source": "    obj[itemName] =  item;",
+          "coverage": 1
+        },
+        "132": {
+          "source": "    if(groupName){",
+          "coverage": 1
+        },
+        "133": {
+          "source": "      obj[groupName] = _self.get('parent')",
+          "coverage": 1
+        },
+        "134": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "135": {
+          "source": "    _self.fireUp(itemName.toLowerCase() + name,obj);",
+          "coverage": 1
+        },
+        "136": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "137": {
+          "source": "});",
+          "coverage": ""
+        },
+        "138": {
           "source": "",
           "coverage": ""
         },
-        "114": {
+        "139": {
           "source": "module.exports = Item;",
           "coverage": 1
         },
-        "115": {
+        "140": {
           "source": "",
           "coverage": ""
         }
@@ -1759,13 +1859,13 @@
   ],
   "stats": {
     "suites": 5,
-    "tests": 18,
-    "passes": 18,
+    "tests": 19,
+    "passes": 19,
     "pending": 0,
     "failures": 0,
-    "start": "2014-08-19T07:11:52.535Z",
-    "end": "2014-08-19T07:11:54.117Z",
-    "duration": 1582
+    "start": "2014-08-21T02:25:19.741Z",
+    "end": "2014-08-21T02:25:21.338Z",
+    "duration": 1598
   },
   "tests": [
     {
@@ -1784,9 +1884,14 @@
       "duration": 2
     },
     {
+      "title": "get visible children",
+      "fullTitle": "achart-plotItem get visible children",
+      "duration": 7
+    },
+    {
       "title": "init test",
       "fullTitle": "achart-plotrange init test",
-      "duration": 4
+      "duration": 1
     },
     {
       "title": "tl,bl,tr,br",
@@ -1796,27 +1901,27 @@
     {
       "title": "in horizontal",
       "fullTitle": "achart-plotrange in horizontal",
-      "duration": 2
+      "duration": 3
     },
     {
       "title": "in vertical",
       "fullTitle": "achart-plotrange in vertical",
-      "duration": 3
+      "duration": 2
     },
     {
       "title": "in range",
       "fullTitle": "achart-plotrange in range",
-      "duration": 2
+      "duration": 5
     },
     {
       "title": "width",
       "fullTitle": "achart-plotrange width",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "height",
       "fullTitle": "achart-plotrange height",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "plotrange",
@@ -1826,7 +1931,7 @@
     {
       "title": "margin",
       "fullTitle": "achart-plotback plotback rect margin",
-      "duration": 5
+      "duration": 2
     },
     {
       "title": "border",
@@ -1851,12 +1956,12 @@
     {
       "title": "image",
       "fullTitle": "achart-plotback plotback image image",
-      "duration": 4
+      "duration": 3
     },
     {
       "title": "change",
       "fullTitle": "achart-plotback plotback image change",
-      "duration": 503
+      "duration": 514
     }
   ],
   "failures": [],
@@ -1877,9 +1982,14 @@
       "duration": 2
     },
     {
+      "title": "get visible children",
+      "fullTitle": "achart-plotItem get visible children",
+      "duration": 7
+    },
+    {
       "title": "init test",
       "fullTitle": "achart-plotrange init test",
-      "duration": 4
+      "duration": 1
     },
     {
       "title": "tl,bl,tr,br",
@@ -1889,27 +1999,27 @@
     {
       "title": "in horizontal",
       "fullTitle": "achart-plotrange in horizontal",
-      "duration": 2
+      "duration": 3
     },
     {
       "title": "in vertical",
       "fullTitle": "achart-plotrange in vertical",
-      "duration": 3
+      "duration": 2
     },
     {
       "title": "in range",
       "fullTitle": "achart-plotrange in range",
-      "duration": 2
+      "duration": 5
     },
     {
       "title": "width",
       "fullTitle": "achart-plotrange width",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "height",
       "fullTitle": "achart-plotrange height",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "plotrange",
@@ -1919,7 +2029,7 @@
     {
       "title": "margin",
       "fullTitle": "achart-plotback plotback rect margin",
-      "duration": 5
+      "duration": 2
     },
     {
       "title": "border",
@@ -1944,12 +2054,12 @@
     {
       "title": "image",
       "fullTitle": "achart-plotback plotback image image",
-      "duration": 4
+      "duration": 3
     },
     {
       "title": "change",
       "fullTitle": "achart-plotback plotback image change",
-      "duration": 503
+      "duration": 514
     }
   ]
 }

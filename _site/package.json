@@ -1,16 +1,16 @@
 {
-  "name": "achart-plotitem",
+  "name": "achart-plot",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://github.com/acharts/achart-plot",
   "keywords": [],
   "homepage": "",
   "author": "dxq613@gmail.com",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/acharts/achart-plot.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/acharts/achart-plot/issues"
   },
   "licenses": "MIT",
   "spm": {

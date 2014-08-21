@@ -123,6 +123,24 @@ describe('achart-plotItem', function() {
 
   });
 
+  it('get visible children',function(){
+    var c = canvas.addGroup(C);
+    c.addGroup(A);
+    c.addGroup(A);
+    c.addGroup(A);
+
+    expect(c.getVisibleChildren().length).to.be(3);
+
+    var first = c.getFirst();
+    c.hideChild(first);
+    expect(first.get('visible')).to.be(false);
+    expect(c.getVisibleChildren().length).to.be(2);
+    c.showChild(first);
+
+    expect(first.get('visible')).to.be(true);
+    expect(c.getVisibleChildren().length).to.be(3);
+  });
+
 });
 
 describe('achart-plotrange',function(){
