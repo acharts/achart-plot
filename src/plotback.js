@@ -9,10 +9,14 @@ var Util = require('achart-util'),
 	PlotRange = require('./plotrange');
 
 /**
- * @class Chart.PlotBack
+ * @class Chart.Plot.Back
  * @protected
  * 决定图表的边框、背景
- * @extends Chart.PlotItem
+ * 
+ *  - <a href="http://spmjs.io/docs/achart-plot/#plot-back" target="_blank">文档</a>
+ *  - <a href="http://spmjs.io/docs/achart-plot/wiki/back.html" target="_blank">wiki</a>
+ *  
+ * @extends Chart.Plot.Item
  */
 var PlotBack = function(cfg){
 	PlotBack.superclass.constructor.call(this,cfg);
@@ -59,10 +63,14 @@ Util.augment(PlotBack,{
 		this._renderBorder();
 		this._renderBackground();
 	},
+	/**
+	 * 重绘背景
+	 */
 	repaint : function(){
 		this._calculateRange();
 		this._renderBorder();
 		this._renderBackground();
+		return this;
 	},
 	//渲染边框
 	_renderBorder : function(){

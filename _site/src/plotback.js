@@ -59,10 +59,14 @@ Util.augment(PlotBack,{
 		this._renderBorder();
 		this._renderBackground();
 	},
+	/**
+	 * 重绘背景
+	 */
 	repaint : function(){
 		this._calculateRange();
 		this._renderBorder();
 		this._renderBackground();
+		return this;
 	},
 	//渲染边框
 	_renderBorder : function(){

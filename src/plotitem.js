@@ -23,8 +23,12 @@ function initClassAttrs(c){
 }
 
 /**
- * @class Chart.PlotItem
+ * @class Chart.Plot.Item
  * 图表内部元素的基类
+ * 
+ *  - <a href="http://spmjs.io/docs/achart-plot/#plot-item" target="_blank">文档</a>
+ *  - <a href="http://spmjs.io/docs/achart-plot/wiki/item.html" target="_blank">wiki</a>
+ *  
  * @extends Chart.Canvas.Group
  * 
  */
@@ -67,9 +71,11 @@ Util.augment(Item,{
 	},
 
   //绑定事件
-  bindUI : function(){
+  beforeRenderUI : function(){
     var _self = this,
       events = _self.get('events');
+
+    Item.superclass.beforeRenderUI.call(this);
     if(events){
       Util.each(events,function(v,k){
         _self.on(k,v);
@@ -92,7 +98,9 @@ Util.augment(Item,{
    * @param  {Chart.Canvas.Base} child 子项
    */
   showChild : function(child){
-    child && child.show();
+    if(child){
+      child.show();
+    }
   },
   /**
    * 隐藏子项

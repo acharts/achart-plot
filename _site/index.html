@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>achart-plot - achart-base </title>
+    <title>achart-plot - achart-plot </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="nico 0.5.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link type="image/x-icon" href="./static/css/favicon.ico" rel="icon">
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="./static/css/normalize.css" />
     <link rel="stylesheet" href="./static/css/site.css" />
     <link rel="stylesheet" href="./static/css/solarized.css" />
@@ -16,7 +16,7 @@ if (!location.port) {
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-50522089-2', 'spm documentation');
+  ga('create', 'UA-50522089-2', 'auto');
   ga('send', 'pageview');
 }
 </script>
@@ -26,6 +26,9 @@ if (!location.port) {
 <script>
   seajs.config({
     base: "./",
+    paths: {
+      'jquery': 'http://static.alipayobjects.com/jquery'
+    },
     alias: {"achart-canvas":"spm_modules/achart-canvas/1.0.0/index.js","achart-raphael":"spm_modules/achart-raphael/1.0.0/index.js","achart-util":"spm_modules/achart-util/1.0.0/index.js","event-simulate":"spm_modules/event-simulate/1.0.0/index.js","expect.js":"spm_modules/expect.js/0.3.1/index.js","jquery":"spm_modules/jquery/1.9.1/jquery.js","sinon":"spm_modules/sinon/1.6.0/sinon.js"}
   });
 </script>
@@ -55,10 +58,84 @@ if (!location.port) {
       <div class="content-wrapper">
         
 <article class="hentry">
-  <h1 class="entry-title">achart-base <a href="http://spmjs.io/package/achart-base"><img src="http://spmjs.io/badge/achart-base" alt="spm version"></a></h1>
+  <h1 class="entry-title">achart-plot <a href="http://spmjs.io/package/achart-plot"><img src="http://spmjs.io/badge/achart-plot" alt="spm version"></a></h1>
   <div class="entry-content">
-    <h2 id="install">Install<a href="#install" class="anchor">¶</a></h2><pre>$ spm install achart-base --save</pre><h2 id="usage">Usage<a href="#usage" class="anchor">¶</a></h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> achartBase = require(<span class="string">'achart-base'</span>);
-<span class="comment">// use achartBase</span></code></pre></div>
+    <p>这个模块是处理图表的显示区域的背景、边框和内部元素的基本模块，主要由3个类构成</p>
+<ul>
+<li>Plot.Item 图表内部控件的基类</li>
+<li>Plot.Back 图表背景相关的类</li>
+<li>Plot.Range 图表显示区域的范围</li>
+</ul>
+<p>相关文档</p>
+<ul>
+<li><a href="wiki/">wiki文档</a></li>
+<li><a href="examples/">demo</a></li>
+</ul>
+<p>依赖的模块</p>
+<ul>
+<li><a href="http://spmjs.io/docs/achart-canvas">achart-canvas</a></li>
+</ul>
+<hr>
+<h2 id="install">Install<a href="#install" class="anchor">¶</a></h2><pre>$ spm install achart-plot --save</pre><h2 id="usage">Usage<a href="#usage" class="anchor">¶</a></h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> Plot = require(<span class="string">'achart-plot'</span>);
+
+<span class="comment">//Plot.Range</span>
+<span class="comment">//Plot.Item</span>
+<span class="comment">//Plot.Back</span></code></pre></div><h2 id="plot-item">Plot.Item<a href="#plot-item" class="anchor">¶</a></h2><ul>
+<li>图表内部所有控件的基类</li>
+<li>静态属性ATTRS 自动转换成默认值</li>
+<li>将mixin的代码片段的静态属性ATTRS 也合并进默认值</li>
+<li>通过events属性传入事件，事件冒泡到图表最外层</li>
+</ul>
+<h3 id="配置项">配置项<a href="#配置项" class="anchor">¶</a></h3><ul>
+<li>events 注册事件</li>
+<li>groupName 分组的名称</li>
+<li><p>itemName 内部选项的名称</p>
+<p>groupName 和 itemName 用于冒泡触发自定义事件是自动生成事件名称,例如 pie + item + change 就构成了 pieitemchange事件</p>
+</li>
+</ul>
+<h3 id="api">api<a href="#api" class="anchor">¶</a></h3><ul>
+<li>getVisibleChildren() 获取可视的子控件</li>
+<li>showChild() 显示子控件，显示子控件的同时做一些操作</li>
+<li>hideChild() 隐藏子控件，隐藏子控件的同时做一些操作</li>
+<li>fireUp(name,ev) 在最顶层的Chart对象上触发事件</li>
+</ul>
+<h2 id="plot-back">Plot.Back<a href="#plot-back" class="anchor">¶</a></h2><ul>
+<li>用于显示图表的背景、外层边框和边距（margin)</li>
+<li>可以使用图片显示图表的背景</li>
+</ul>
+<h3 id="配置项">配置项<a href="#配置项" class="anchor">¶</a></h3><ul>
+<li>margin 边距可以是单个数值也可以是一个数组，[top,right,bottom,left]</li>
+<li>border 外边框的配置项，是一个Rect矩形，参考 <a href="http://spmjs.io/docs/achart-canvas/#rect">Rect配置项</a></li>
+<li><p>background 减去边距的内部背景，如果：</p>
+<ol>
+<li>background存在 image属性，则认为是一个图片，其他配置项是<a href="http://spmjs.io/docs/achart-canvas/#image">图片的配置信息</a></li>
+<li>如果不存在image属性，则认为是一个矩形</li>
+</ol>
+</li>
+<li>plotRange 外边框减去margin后自动生成的可视区域对象，只读属性</li>
+</ul>
+<h3 id="api">API<a href="#api" class="anchor">¶</a></h3><ul>
+<li>repaint() 重绘背景、边框</li>
+</ul>
+<h2 id="plot-range">Plot.Range<a href="#plot-range" class="anchor">¶</a></h2><ul>
+<li>图表的可视区域，不是控件类，仅仅用于判断是否在可视区域的类</li>
+</ul>
+<h3 id="属性">属性<a href="#属性" class="anchor">¶</a></h3><ul>
+<li>start 起始点</li>
+<li>end 结束点</li>
+<li>tl ： top-left 顶点</li>
+<li>tr : top-right 顶点</li>
+<li>bl ： bottom-left 顶点</li>
+<li>br : bottom-right 顶点</li>
+<li>cc ： 中心点</li>
+</ul>
+<h3 id="api">API<a href="#api" class="anchor">¶</a></h3><ul>
+<li>isInRange(x,y) 是否在可视区域内</li>
+<li>getWidth() 可视区域的宽度</li>
+<li>getHeight() 可视区域的高度</li>
+<li>reset(start,end) 重置起始点、结束点</li>
+</ul>
+<h2 id="links">links<a href="#links" class="anchor">¶</a></h2><h3 id="wiki文档"><a href="wiki/">wiki文档</a><a href="#wiki文档" class="anchor">¶</a></h3><h3 id="demo"><a href="examples/">demo</a><a href="#demo" class="anchor">¶</a></h3>
   </div>
 </article>
 
@@ -77,7 +154,20 @@ if (!location.port) {
   </body>
   <script src="./static/js/nprogress.js?nowrap"></script>
   <script>
-  NProgress.start();
-  window.onload = NProgress.done;
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
   </script>
 </html>

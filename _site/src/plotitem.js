@@ -67,9 +67,11 @@ Util.augment(Item,{
 	},
 
   //绑定事件
-  bindUI : function(){
+  beforeRenderUI : function(){
     var _self = this,
       events = _self.get('events');
+
+    Item.superclass.beforeRenderUI.call(this);
     if(events){
       Util.each(events,function(v,k){
         _self.on(k,v);

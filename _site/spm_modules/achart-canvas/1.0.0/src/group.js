@@ -18,16 +18,12 @@ Group.ATTRS = {
    * 沿x轴的偏移量
    * @type {Number}
    */
-  x : {
-
-  },
+  x : null,
   /**
    * 沿y轴的偏移量
    * @type {Number}
    */
-  y : {
-
-  }
+  y : null
 };
 
 Util.extend(Group,Container);
@@ -41,8 +37,8 @@ Util.augment(Group,{
    * @type {Boolean}
    */
   isGroup : true,
-
-  renderUI : function(){
+  //创建DOM 
+  createDom : function(){
     var _self = this,
       el = _self.get('el'),
       attrs = _self.get('attrs'),
@@ -55,7 +51,10 @@ Util.augment(Group,{
     node = el.node;
     node.group = _self;
     _self.set('node',node);
-    _self._initTranslate();
+  },
+  //渲染
+  renderUI : function(){
+    this._initTranslate();
   },
   //初始化平移
   _initTranslate: function(){

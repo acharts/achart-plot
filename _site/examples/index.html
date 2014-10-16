@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="nico 0.5.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
     <link rel="stylesheet" href="../static/css/site.css" />
     <link rel="stylesheet" href="../static/css/solarized.css" />
@@ -16,7 +16,7 @@ if (!location.port) {
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-50522089-2', 'spm documentation');
+  ga('create', 'UA-50522089-2', 'auto');
   ga('send', 'pageview');
 }
 </script>
@@ -26,6 +26,9 @@ if (!location.port) {
 <script>
   seajs.config({
     base: "../",
+    paths: {
+      'jquery': 'http://static.alipayobjects.com/jquery'
+    },
     alias: {"achart-canvas":"spm_modules/achart-canvas/1.0.0/index.js","achart-raphael":"spm_modules/achart-raphael/1.0.0/index.js","achart-util":"spm_modules/achart-util/1.0.0/index.js","event-simulate":"spm_modules/event-simulate/1.0.0/index.js","expect.js":"spm_modules/expect.js/0.3.1/index.js","jquery":"spm_modules/jquery/1.9.1/jquery.js","sinon":"spm_modules/sinon/1.6.0/sinon.js"}
   });
 </script>
@@ -57,9 +60,240 @@ if (!location.port) {
 <article class="hentry">
   <h1 class="entry-title">Demo</h1>
   <div class="entry-content">
-    <h2 id="normal-usage">Normal usage<a href="#normal-usage" class="anchor">¶</a></h2><script>seajs.use('index', function(achartBase) {
+    <h2 id="plot-back">plot back<a href="#plot-back" class="anchor">¶</a></h2><div class="nico-insert-code">
+<div id="c1"></div></div><div class="highlight"><pre><code class="xml">
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script>seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
 
-});</script><div class="highlight"><pre><code class="javascript">seajs.use(<span class="string">'achart-plot/1.0.0/index'</span>, <span class="function"><span class="keyword">function</span><span class="params">(achartBase)</span> {</span>
+  var canvas = new Canvas({
+    id : 'c1',
+    width : 500,
+    height : 500
+  });
+
+  var back = canvas.addGroup(Plot.Back,{
+    marin : 50,
+    border : {
+      stroke : '#ddd'
+    },
+    background : {
+      stroke : 'red',
+      fill : '#ddd'
+    }
+  });
+
+});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
+
+  <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
+    id : <span class="string">'c1'</span>,
+    width : <span class="number">500</span>,
+    height : <span class="number">500</span>
+  });
+
+  <span class="keyword">var</span> back = canvas.addGroup(Plot.Back,{
+    marin : <span class="number">50</span>,
+    border : {
+      stroke : <span class="string">'#ddd'</span>
+    },
+    background : {
+      stroke : <span class="string">'red'</span>,
+      fill : <span class="string">'#ddd'</span>
+    }
+  });
+
+});</code></pre></div><h2 id="plot-image">plot image<a href="#plot-image" class="anchor">¶</a></h2><div class="nico-insert-code">
+<div id="c2"></div></div><div class="highlight"><pre><code class="xml">
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script>seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
+
+  var canvas = new Canvas({
+    id : 'c2',
+    width : 500,
+    height : 500
+  });
+
+  var back = canvas.addGroup(Plot.Back,{
+    marin : 50,
+    border : {
+      stroke : '#ddd'
+    },
+    background : {
+      image : "http://gtms03.alicdn.com/tps/i3/TB1bAqAGXXXXXXbXpXXvKyzTVXX-520-280.jpg"
+    }
+  });
+
+});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
+
+  <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
+    id : <span class="string">'c2'</span>,
+    width : <span class="number">500</span>,
+    height : <span class="number">500</span>
+  });
+
+  <span class="keyword">var</span> back = canvas.addGroup(Plot.Back,{
+    marin : <span class="number">50</span>,
+    border : {
+      stroke : <span class="string">'#ddd'</span>
+    },
+    background : {
+      image : <span class="string">"http://gtms03.alicdn.com/tps/i3/TB1bAqAGXXXXXXbXpXXvKyzTVXX-520-280.jpg"</span>
+    }
+  });
+
+});</code></pre></div><h2 id="获取分组默认值">获取分组默认值<a href="#获取分组默认值" class="anchor">¶</a></h2><div class="nico-insert-code">
+<div id="c3"></div></div><div class="highlight"><pre><code class="xml">
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><p><h2>默认属性</h2></p>
+<div id="log"></div>
+
+<script>seajs.use(['achart-canvas','index','achart-util','jquery'], function(Canvas,Plot,Util,$) {
+
+  var canvas = new Canvas({
+    id : 'c3',
+    width : 50,
+    height : 50
+  });
+
+  //声明类A
+  var  A = function(cfg){
+    A.superclass.constructor.call(this,cfg);
+  };
+
+  A.ATTRS = {
+    a : 'a1'
+  };
+
+  //继承自Plot.Item
+  Util.extend(A,Plot.Item);
+
+  //类B继承类A
+  var B = function(cfg){
+     B.superclass.constructor.call(this,cfg);
+  };
+
+  B.ATTRS = {
+    a : 'a2',
+    b : {
+      c : {
+        d : 1
+      },
+      c2 : [1,2]
+    }
+  };
+
+  Util.extend(B,A);
+
+  //mixin的代码片段
+  var AMix = function(){
+
+  };
+
+  AMix.ATTRS = {
+    am : 'am'
+  }
+
+  var C = function(cfg){
+     C.superclass.constructor.call(this,cfg);
+  };
+
+  C.ATTRS = {
+    a : 'a2',
+    b : {
+      c : {
+        d : 2,
+        d1 : 3
+      },
+      c2 : [2],
+      c3 : 'c3'
+    }
+  };
+
+  Util.extend(C,B);
+
+  Util.mixin(C,[AMix]);
+
+  var c = canvas.addGroup(C,{
+    a : 'c'
+  });
+
+  $('#log').html(JSON.stringify({
+    a : c.get('a'),
+    b : c.get('b'),
+    am : c.get('am')
+  }));
+
+});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>,<span class="string">'achart-util'</span>,<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot,Util,$)</span> {</span>
+
+  <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
+    id : <span class="string">'c3'</span>,
+    width : <span class="number">50</span>,
+    height : <span class="number">50</span>
+  });
+
+  <span class="comment">//声明类A</span>
+  <span class="keyword">var</span>  A = <span class="function"><span class="keyword">function</span><span class="params">(cfg)</span>{</span>
+    A.superclass.constructor.call(<span class="keyword">this</span>,cfg);
+  };
+
+  A.ATTRS = {
+    a : <span class="string">'a1'</span>
+  };
+
+  <span class="comment">//继承自Plot.Item</span>
+  Util.extend(A,Plot.Item);
+
+  <span class="comment">//类B继承类A</span>
+  <span class="keyword">var</span> B = <span class="function"><span class="keyword">function</span><span class="params">(cfg)</span>{</span>
+     B.superclass.constructor.call(<span class="keyword">this</span>,cfg);
+  };
+
+  B.ATTRS = {
+    a : <span class="string">'a2'</span>,
+    b : {
+      c : {
+        d : <span class="number">1</span>
+      },
+      c2 : [<span class="number">1</span>,<span class="number">2</span>]
+    }
+  };
+
+  Util.extend(B,A);
+
+  <span class="comment">//mixin的代码片段</span>
+  <span class="keyword">var</span> AMix = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+
+  };
+
+  AMix.ATTRS = {
+    am : <span class="string">'am'</span>
+  }
+
+  <span class="keyword">var</span> C = <span class="function"><span class="keyword">function</span><span class="params">(cfg)</span>{</span>
+     C.superclass.constructor.call(<span class="keyword">this</span>,cfg);
+  };
+
+  C.ATTRS = {
+    a : <span class="string">'a2'</span>,
+    b : {
+      c : {
+        d : <span class="number">2</span>,
+        d1 : <span class="number">3</span>
+      },
+      c2 : [<span class="number">2</span>],
+      c3 : <span class="string">'c3'</span>
+    }
+  };
+
+  Util.extend(C,B);
+
+  Util.mixin(C,[AMix]);
+
+  <span class="keyword">var</span> c = canvas.addGroup(C,{
+    a : <span class="string">'c'</span>
+  });
+
+  $(<span class="string">'#log'</span>).html(JSON.stringify({
+    a : c.get(<span class="string">'a'</span>),
+    b : c.get(<span class="string">'b'</span>),
+    am : c.get(<span class="string">'am'</span>)
+  }));
 
 });</code></pre></div>
   </div>
@@ -80,7 +314,20 @@ if (!location.port) {
   </body>
   <script src="../static/js/nprogress.js?nowrap"></script>
   <script>
-  NProgress.start();
-  window.onload = NProgress.done;
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
   </script>
 </html>
