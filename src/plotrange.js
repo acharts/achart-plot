@@ -14,6 +14,7 @@ function max(x,y){
 
 /**
  * @class Chart.Plot.Range
+ * @private
  * 用于计算是否在坐标轴内的帮助类
  *
  *  - <a href="http://spmjs.io/docs/achart-plot/#plot-range" target="_blank">文档</a>

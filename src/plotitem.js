@@ -24,6 +24,7 @@ function initClassAttrs(c){
 
 /**
  * @class Chart.Plot.Item
+ * @private
  * 图表内部元素的基类
  * 
  *  - <a href="http://spmjs.io/docs/achart-plot/#plot-item" target="_blank">文档</a>

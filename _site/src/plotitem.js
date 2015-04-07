@@ -23,8 +23,13 @@ function initClassAttrs(c){
 }
 
 /**
- * @class Chart.PlotItem
+ * @class Chart.Plot.Item
+ * @private
  * 图表内部元素的基类
+ * 
+ *  - <a href="http://spmjs.io/docs/achart-plot/#plot-item" target="_blank">文档</a>
+ *  - <a href="http://spmjs.io/docs/achart-plot/wiki/item.html" target="_blank">wiki</a>
+ *  
  * @extends Chart.Canvas.Group
  * 
  */
@@ -94,7 +99,9 @@ Util.augment(Item,{
    * @param  {Chart.Canvas.Base} child 子项
    */
   showChild : function(child){
-    child && child.show();
+    if(child){
+      child.show();
+    }
   },
   /**
    * 隐藏子项

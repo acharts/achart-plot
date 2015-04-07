@@ -10,7 +10,7 @@ var Util = require('achart-util'),
 
 /**
  * @class Chart.Plot.Back
- * @protected
+ * @private
  * 决定图表的边框、背景
  * 
  *  - <a href="http://spmjs.io/docs/achart-plot/#plot-back" target="_blank">文档</a>

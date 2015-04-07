@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>achart-plot - Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico 0.5.1" />
+    <meta name="generator" content="nico-spm 0.5.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
     <link rel="stylesheet" href="../static/css/site.css" />
+    <link rel="stylesheet" href="../static/css/site.css" />
     <link rel="stylesheet" href="../static/css/solarized.css" />
+    <link rel="stylesheet" href="../static/css/codemirror.css" />
 <script>
 if (!location.port) {
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -20,16 +22,12 @@ if (!location.port) {
   ga('send', 'pageview');
 }
 </script>
-
-<script src="http://static.alipayobjects.com/seajs/seajs/2.2.0/sea.js"></script>
+<script src="../static/js/sea.js?nowrap"></script>
 
 <script>
   seajs.config({
     base: "../",
-    paths: {
-      'jquery': 'http://static.alipayobjects.com/jquery'
-    },
-    alias: {"achart-canvas":"spm_modules/achart-canvas/1.0.0/index.js","achart-raphael":"spm_modules/achart-raphael/1.0.0/index.js","achart-util":"spm_modules/achart-util/1.0.0/index.js","event-simulate":"spm_modules/event-simulate/1.0.0/index.js","expect.js":"spm_modules/expect.js/0.3.1/index.js","jquery":"spm_modules/jquery/1.9.1/jquery.js","sinon":"spm_modules/sinon/1.6.0/sinon.js"}
+    alias: {"achart-util":"achart-util/1.1.0/index.js","achart-canvas":"achart-canvas/1.1.3/index.js","expect.js":"expect.js/0.3.1/index.js","sinon":"sinon/1.6.0/sinon.js","event-simulate":"event-simulate/1.0.0/index.js"}
   });
 </script>
     <!--[if lt IE 9]>
@@ -42,7 +40,7 @@ if (!location.port) {
       <h1>
           <a href="../">Achart-plot</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/achart-plot" title="">1.0.0</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/achart-plot" title="">1.1.3</a></p>
         <p class="sidebar-description" data-keyword="">https://github.com/acharts/achart-plot</p>
         <a class="sidebar-source" href="https://github.com/acharts/achart-plot" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -54,6 +52,25 @@ if (!location.port) {
         </ul>
         
 
+        <div class="qrcode-wrapper">
+          <i class="icon">
+            <div class="icon-qrcode">
+              <svg width="1024" height="1024" viewBox="0 0 1024 1024">
+                <g class="transform-group">
+                  <g transform="translate(0, 18) scale(1, -1) scale(0.024, 0.024)">
+                    <path d="M116.8 792.062v0 0zM334.523 138.877v-72.569h-72.569v72.569h72.569zM334.523 574.339v-72.569h-72.569v72.569h72.569zM769.984 574.339v-72.569h-72.569v72.569h72.569zM189.369-5.705h217.723v217.167h-217.723v-217.167zM189.369 429.185h217.723v217.723h-217.723v-217.723zM624.831 429.185h217.723v217.723h-217.723v-217.723zM479.677 284.031v-362.877h-362.877v362.877h362.877zM769.984-6.277v-72.569h-72.569v72.569h72.569zM915.138-6.277v-72.569h-72.569v72.569h72.569zM915.138 284.031v-217.723h-217.723v72.569h-72.569v-217.723h-72.569v362.877h217.723v-72.569h72.569v72.569h72.569zM479.677 719.493v-362.877h-362.877v362.877h362.877zM915.138 719.493v-362.877h-362.877v362.877h362.877z" fill="#666"></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div class="qrcode" id="qrcode"></div>
+          </i>
+        </div>
+        <div class="footer-wrapper"><a target="_blank" href="http://spmjs.io">spmjs.io</a> /
+<a target="_blank" href="https://github.com/spmjs/spm">spm</a> /
+<a target="_blank" href="http://seajs.org">sea.js</a> /
+<a target="_blank" href="http://lab.lepture.com/nico/">nico-spm</a>
+        </div>
       </aside>
       <div class="content-wrapper">
         
@@ -62,7 +79,7 @@ if (!location.port) {
   <div class="entry-content">
     <h2 id="plot-back">plot back<a href="#plot-back" class="anchor">¶</a></h2><div class="nico-insert-code">
 <div id="c1"></div></div><div class="highlight"><pre><code class="xml">
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script>seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script class="nico-insert-code">seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
 
   var canvas = new Canvas({
     id : 'c1',
@@ -81,7 +98,26 @@ if (!location.port) {
     }
   });
 
-});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
+});</script><textarea mode="javascript" class="spm-doc-textarea">seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
+
+  var canvas = new Canvas({
+    id : 'c1',
+    width : 500,
+    height : 500
+  });
+
+  var back = canvas.addGroup(Plot.Back,{
+    marin : 50,
+    border : {
+      stroke : '#ddd'
+    },
+    background : {
+      stroke : 'red',
+      fill : '#ddd'
+    }
+  });
+
+});</textarea><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
 
   <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
     id : <span class="string">'c1'</span>,
@@ -102,7 +138,7 @@ if (!location.port) {
 
 });</code></pre></div><h2 id="plot-image">plot image<a href="#plot-image" class="anchor">¶</a></h2><div class="nico-insert-code">
 <div id="c2"></div></div><div class="highlight"><pre><code class="xml">
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script>seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><script class="nico-insert-code">seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
 
   var canvas = new Canvas({
     id : 'c2',
@@ -120,7 +156,25 @@ if (!location.port) {
     }
   });
 
-});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
+});</script><textarea mode="javascript" class="spm-doc-textarea">seajs.use(['achart-canvas','index'], function(Canvas,Plot) {
+
+  var canvas = new Canvas({
+    id : 'c2',
+    width : 500,
+    height : 500
+  });
+
+  var back = canvas.addGroup(Plot.Back,{
+    marin : 50,
+    border : {
+      stroke : '#ddd'
+    },
+    background : {
+      image : "http://gtms03.alicdn.com/tps/i3/TB1bAqAGXXXXXXbXpXXvKyzTVXX-520-280.jpg"
+    }
+  });
+
+});</textarea><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot)</span> {</span>
 
   <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
     id : <span class="string">'c2'</span>,
@@ -143,7 +197,7 @@ if (!location.port) {
 <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"c3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre></div><p><h2>默认属性</h2></p>
 <div id="log"></div>
 
-<script>seajs.use(['achart-canvas','index','achart-util','jquery'], function(Canvas,Plot,Util,$) {
+<script class="nico-insert-code">seajs.use(['achart-canvas','index','achart-util','jquery'], function(Canvas,Plot,Util,$) {
 
   var canvas = new Canvas({
     id : 'c3',
@@ -219,7 +273,83 @@ if (!location.port) {
     am : c.get('am')
   }));
 
-});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'achart-plot/1.0.0/index'</span>,<span class="string">'achart-util'</span>,<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot,Util,$)</span> {</span>
+});</script><textarea mode="javascript" class="spm-doc-textarea">seajs.use(['achart-canvas','index','achart-util','jquery'], function(Canvas,Plot,Util,$) {
+
+  var canvas = new Canvas({
+    id : 'c3',
+    width : 50,
+    height : 50
+  });
+
+  //声明类A
+  var  A = function(cfg){
+    A.superclass.constructor.call(this,cfg);
+  };
+
+  A.ATTRS = {
+    a : 'a1'
+  };
+
+  //继承自Plot.Item
+  Util.extend(A,Plot.Item);
+
+  //类B继承类A
+  var B = function(cfg){
+     B.superclass.constructor.call(this,cfg);
+  };
+
+  B.ATTRS = {
+    a : 'a2',
+    b : {
+      c : {
+        d : 1
+      },
+      c2 : [1,2]
+    }
+  };
+
+  Util.extend(B,A);
+
+  //mixin的代码片段
+  var AMix = function(){
+
+  };
+
+  AMix.ATTRS = {
+    am : 'am'
+  }
+
+  var C = function(cfg){
+     C.superclass.constructor.call(this,cfg);
+  };
+
+  C.ATTRS = {
+    a : 'a2',
+    b : {
+      c : {
+        d : 2,
+        d1 : 3
+      },
+      c2 : [2],
+      c3 : 'c3'
+    }
+  };
+
+  Util.extend(C,B);
+
+  Util.mixin(C,[AMix]);
+
+  var c = canvas.addGroup(C,{
+    a : 'c'
+  });
+
+  $('#log').html(JSON.stringify({
+    a : c.get('a'),
+    b : c.get('b'),
+    am : c.get('am')
+  }));
+
+});</textarea><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'achart-canvas'</span>,<span class="string">'index'</span>,<span class="string">'achart-util'</span>,<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Canvas,Plot,Util,$)</span> {</span>
 
   <span class="keyword">var</span> canvas = <span class="keyword">new</span> Canvas({
     id : <span class="string">'c3'</span>,
@@ -302,15 +432,6 @@ if (!location.port) {
       </div>
       
     </div>
-    <div class="footer-wrapper">
-      <footer>
-        <p class="footer-powered"><a href="http://spmjs.io">spmjs.io</a> •
-<a href="https://github.com/spmjs/spm">spm</a> •
-<a href="http://seajs.org">Sea.js</a> •
-<a href="http://lab.lepture.com/nico/">nico</a>
-        </p>
-      </footer>
-    </div>
   </body>
   <script src="../static/js/nprogress.js?nowrap"></script>
   <script>
@@ -327,7 +448,133 @@ if (!location.port) {
     };
     ready(function() {
       NProgress.inc(0.6);
+      seajs.use("../static/js/arale-qrcode.js?nowrap", function(QRCode) {
+        var url = location.href;
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+          url = url.replace(location.hostname, '10.15.100.118');
+        }
+        var el = new QRCode({
+          text: url,
+          render: 'canvas',
+          width: 120,
+          height: 120
+        });
+        document.getElementById('qrcode').appendChild(el);
+      });
     }, false);
   })();
+
+  seajs.config({
+    alias: {
+      'jquery-for-spm-doc': 'http://tfs.alipayobjects.com/images/T1dQdeXjBhXXXXXXXX.js'
+    }
+  });
+
+  seajs.use(['jquery-for-spm-doc'], function($) {
+
+    $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api');
+
+    // 给 iframe 加链接
+    $('.nico-iframe').each(function(i, item) {
+      var src = $(item).find('iframe').attr('src')
+      var html = '<a class="new-window" target="_blank" href="' + src + '">Open</a>'
+      $(item).append(html)
+    });
+
+    $('.highlight').each(function(i, item) {
+      if ($(item).prev().hasClass('spm-doc-textarea')) {
+        $(item).append('<div class="editor-toggle">Live Edit</div>');
+      }
+    });
+
+    // toggle editable status
+    $('.entry-content').on('click', '.editor-toggle', function(e) {
+      if (!this.editable) {
+        enterEditor(this);
+      } else {
+        quitEditor(this);
+      }
+    });
+
+    // 代码实时编辑功能
+    function CodeMirrorify(item) {
+      item = $(item);
+      var cm = CodeMirror.fromTextArea(item[0], {
+        lineNumbers: true,
+        mode: item.attr('mode')
+      });
+      var timeout;
+      cm.on('change', function(instance, changeObj) {
+        // 延迟触发新代码
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function() {
+          var seaTempId = (new Date()).getTime();
+          var code = instance.getDoc().getValue();
+          if (instance.getDoc().getMode().name === 'javascript') {
+            code = 'define("./' + seaTempId +'", function(require) {' + code +
+                   '});seajs.use("./' + seaTempId + '")';
+          }
+          var prevInsertCodeElement = item.prev('.nico-insert-code');
+          prevInsertCodeElement.html(code);
+
+          $('.entry-content')
+          .find('>:not(.CodeMirror):not(.spm-doc-textarea)').each(function(i, item) {
+            item = $(item);
+            var cloneNode = item.clone();
+
+            // jquery@1.11 的 replaceWith 不会重新执行代码
+            // 需要手动执行
+            if (item[0].tagName === 'SCRIPT') {
+              eval(cloneNode.html());
+            } else {
+              item.replaceWith(cloneNode);
+              if (item[0] && item[0].cm) {
+                item[0].cm = null;
+              }
+            }
+
+            // 提高下效率，只重新渲染当前修改代码前面的 DOM 元素
+            if (item[0] === prevInsertCodeElement[0]) {
+              return false;
+            }
+          });
+
+          $(instance.getWrapperElement()).removeClass('saved');
+          setTimeout(function() {
+            $(instance.getWrapperElement()).addClass('saved');
+          }, 10);
+        }, 400);
+      });
+      return cm;
+    }
+
+    function enterEditor(toggleButton) {
+      if (!CodeMirror) {
+        return;
+      }
+      $(toggleButton).parent().hide();
+      if (!toggleButton.cm) {
+        toggleButton.cm = CodeMirrorify($(toggleButton).parent().prev('.spm-doc-textarea'));
+      }
+      $(toggleButton).appendTo(toggleButton.cm.getWrapperElement());
+      $(toggleButton.cm.getWrapperElement()).show();
+      $(toggleButton).html('Quit edit');
+      toggleButton.editable = true; 
+    }
+
+    function quitEditor(toggleButton) {
+      $(toggleButton).parent().hide();
+      var highlightElem = $(toggleButton.cm.getWrapperElement()).next('.highlight');
+      highlightElem.append(toggleButton).show();
+      $(toggleButton).html('Live edit');
+      toggleButton.editable = false; 
+    }
+
+  });
   </script>
+  <!-- codemirror.js + javascript.js + css.js + htmlmixed.js -->
+  <script src="http://tfs.alipayobjects.com/images/T1cyxeXjthXXXXXXXX.js"></script>
 </html>
